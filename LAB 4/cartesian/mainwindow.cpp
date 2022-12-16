@@ -24,36 +24,39 @@ int ddx2=7;
 int ddy1=3;
 int ddy2=5;
 double r=10.5;
+int e=25;
 void MainWindow::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
     painter.setPen (QPen(Qt::black,1,Qt::SolidLine,Qt::FlatCap));
     QPainterPath path;
-for(int i=0;i<50;i++)
+for(int i=0;i<500;i++)
 {
-    path.moveTo(0,25*i);
-    path.lineTo(1920,25*i);
+    path.moveTo(0,e*i);
+    path.lineTo(1920,e*i);
 }
-for(int i=0;i<50;i++)
+for(int i=0;i<500;i++)
 {
-    path.moveTo(i*25,0);
-    path.lineTo(i*25,1080);
+    path.moveTo(i*e,0);
+    path.lineTo(i*e,1080);
 }
      painter.drawPath(path);
      painter.setPen (QPen(Qt::black,5,Qt::SolidLine,Qt::FlatCap));
      QPainterPath path2;
-     path2.moveTo(16*25,0);
-     path2.lineTo(16*25,1080);
-     path2.moveTo(0,25*12);
-     path2.lineTo(1920,25*12);
+     path2.moveTo(16*e*e*(25/e),0);
+     path2.lineTo(16*e*e*(25/e),1080);
+     path2.moveTo(0,12*e*e*(25/e));
+     path2.lineTo(1920,12*e*e*(25/e));
       painter.drawPath(path2);
+      int x0=16*e*(25/e);
+      int y0=12*e*(25/e);
       QPainterPath path3,path4;
       painter.setPen (QPen(Qt::red,5,Qt::SolidLine,Qt::FlatCap));
-      path3.moveTo((16+x1)*25,(12-y1)*25);
-      path3.lineTo((16+x2)*25,(12-y2)*25);
+      path3.moveTo(x0+x1*e,y0-y1*e);
+      path3.lineTo(x0+x2*e,y0-y2*e);
       painter.drawPath(path3);
-      int x=(16+x1)*25;
-      int y=(12-y1)*25;
+      int x=x0+x1*e;
+      int y=y0-y1*e;
       double dx=x2-x1;
       double dy=y2-y1;
       double k=dy/dx;
@@ -62,9 +65,6 @@ for(int i=0;i<50;i++)
           k=-k;
       }
       double er=-0.5;
-      int e=25;
-      int x0=16*e;
-      int y0=12*e;
       int ex,ey;
       if(x2-x1>0)
       {
@@ -90,7 +90,7 @@ for(int i=0;i<50;i++)
           {
               k=-k;
           }
-          while(y!=(12-y2)*25)
+          while(y!=y0-y2*e)
           {
           path4.moveTo(x,y);
           path4.lineTo(x,y+ey);
@@ -109,7 +109,7 @@ for(int i=0;i<50;i++)
           }
       }
       else{
-      while(x!=(16+x2)*25)
+      while(x!=x0+x2*e)
       {
       path4.moveTo(x,y);
       path4.lineTo(x,y+ey);
@@ -335,6 +335,12 @@ void MainWindow::on_action_4_triggered()
     ddx2=QInputDialog::getInt(this,tr(""),tr("Enter x2"));
     ddy1=QInputDialog::getInt(this,tr(""),tr("Enter y1"));
     ddy2=QInputDialog::getInt(this,tr(""),tr("Enter y2"));
+    repaint();
+
+}
+void MainWindow::on_action_5_triggered()
+{
+    e=QInputDialog::getInt(this,tr(""),tr("Enter pixel size"));
     repaint();
 
 }

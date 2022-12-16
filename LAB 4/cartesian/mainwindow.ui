@@ -31,6 +31,7 @@
     <addaction name="action_2"/>
     <addaction name="action_3"/>
     <addaction name="action_4"/>
+    <addaction name="action_5"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -53,6 +54,11 @@
   <action name="action_4">
    <property name="text">
     <string>ЦДА</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Масштаб</string>
    </property>
   </action>
  </widget>
