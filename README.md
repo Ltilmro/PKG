@@ -10,5 +10,7 @@ The .exe file launches the html page in chrome
 
 
 4.Rasterization
+
 the exe will launch an app with pre-drawn lines
+
 To redraw the lines use the 'Rasterization' drop-down menu.
