@@ -14,3 +14,8 @@ The .exe file launches the html page in chrome
 the exe will launch an app with pre-drawn lines
 
 To redraw the lines use the 'Rasterization' drop-down menu.
+
+
+5.Clipping
+
+get edges from input.txt
